@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="hu">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Állítsd sorba! – Faragó Csaba kvízkérdései</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,Segoe UI,Arial,sans-serif;background:#101923;color:#f6f3e9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 90% 0%,#253a43 0,transparent 55%);min-height:100vh}
+main{max-width:1400px;margin:auto;padding:32px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #ffffff26;padding-bottom:20px}
+.brand{font-weight:800;letter-spacing:.12em;font-size:15px}.brand span{color:#edc77a}button,select{font:inherit;color:inherit;background:#22313e;border:1px solid #ffffff30;border-radius:10px;padding:11px 16px;cursor:pointer}button:hover,select:hover{border-color:#edc77a}button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #edc77a;outline-offset:4px}button:disabled{opacity:.35;cursor:default}
+.top-actions{display:flex;gap:10px;align-items:center}.eyebrow{color:#edc77a;text-transform:uppercase;letter-spacing:.18em;font-size:13px;margin:30px 0 12px}
+h1{font-size:clamp(28px,3.6vw,52px);line-height:1.12;margin:0 0 12px;font-weight:750;max-width:1100px}.intro{color:#aebecb;margin:0 0 25px;font-size:17px}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{display:flex;align-items:flex-start;gap:18px;padding:24px;background:#1b2a37;border:1px solid #ffffff18;border-radius:16px;min-height:145px}.card.hidden{background:#ffffff02;border:1px dashed #ffffff18;align-items:center}.placeholder{color:#8293a1;font-size:16px}.badge{display:grid;place-items:center;background:#edc77a;color:#18222b;flex-shrink:0;width:44px;height:44px;border-radius:10px;font-weight:800;font-size:24px}.text{font-size:clamp(18px,1.65vw,25px);line-height:1.35;margin:0}.value{color:#edc77a;font-size:20px;margin-top:10px;font-weight:650}.card>div{min-width:0}.expanded-value{color:#d6e1e8;font-size:18px;line-height:1.5;margin-top:8px;overflow-wrap:anywhere}.value sup{font-size:.7em;line-height:0;vertical-align:super}.rank{font-size:13px;color:#aebecb;display:block;margin-bottom:5px}
+.solution{min-height:56px;display:flex;align-items:center;gap:12px;margin:20px 0;color:#b7c5ce}.solution strong{color:#edc77a;font-size:27px;letter-spacing:.13em}.controls{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid #ffffff26;padding:20px 0}.primary{background:#edc77a;color:#14212d;border-color:#edc77a;min-width:250px;font-weight:750}.group{display:flex;gap:10px}.hint{color:#91a3b1;font-size:13px}details{color:#aebecb;font-size:14px;max-width:800px;margin-top:12px}summary{cursor:pointer}details p{line-height:1.6}.bar{height:3px;background:#ffffff12;margin:0 0 16px}.bar div{height:100%;background:#edc77a;transition:width .2s}
+@media(max-width:750px){main{padding:20px}header,.controls{align-items:flex-start;flex-wrap:wrap}.answers{grid-template-columns:1fr}.top-actions{flex-wrap:wrap}.card{min-height:100px;padding:18px}.primary{min-width:0}h1{font-size:32px}.hint{line-height:1.6}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+[hidden]{display:none!important}.guess-panel{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:20px;margin-top:20px;background:#1b2a37;border-radius:12px}.guess-panel label{font-weight:650}.guess-panel input{font:inherit;font-weight:750;letter-spacing:.16em;width:145px;padding:12px;border:1px solid #91a3b1;border-radius:8px;background:#101923;color:#f6f3e9}.guess-panel input:focus-visible{outline:3px solid #edc77a;outline-offset:3px}.guess-panel input[aria-invalid=true]{border-color:#f8a49a}#guess-help{color:#b7c5ce;font-size:14px}.score{margin:20px 0;padding:22px;border:1px solid #edc77a;border-radius:12px}.score strong{font-size:26px;color:#edc77a}.score p{line-height:1.5;margin-bottom:0}#restart{margin-top:16px}
+
+/* Vetítéskor a teljes tartalom a rendelkezésre álló képernyőhöz igazodik. */
+@media (min-width:900px) and (min-height:500px) {
+  body{height:100dvh;min-height:0;overflow:hidden}
+  main{position:absolute;top:0;left:50%;width:100%;max-width:1600px;margin:0;padding:14px 28px;transform:translateX(-50%) scale(var(--screen-scale,1));transform-origin:top center}
+  header{padding-bottom:10px;gap:12px}
+  button,select{padding:8px 12px}
+  .eyebrow{margin:12px 0 6px;font-size:12px}
+  h1{font-size:clamp(28px,3vw,44px);margin-bottom:10px;max-width:none}
+  .intro{display:none}
+  .bar{margin-bottom:12px}
+  .answers{gap:12px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .card{min-height:110px;padding:16px;gap:14px}
+  .text{font-size:clamp(19px,1.65vw,26px);line-height:1.25}
+  .badge{width:38px;height:38px;font-size:22px}
+  .value{font-size:20px;margin-top:7px}
+  .expanded-value{font-size:17px;line-height:1.3;margin-top:5px}
+  .solution{min-height:34px;margin:10px 0;gap:10px}
+  .solution strong{font-size:25px}
+  .controls{padding:10px 0}
+  .guess-panel{padding:12px;margin-top:12px;gap:10px}
+  .guess-panel input{padding:8px;width:130px}
+  .score{padding:12px 16px;margin:12px 0}
+  .score strong{font-size:23px}
+  .score p{font-size:15px;line-height:1.35;margin-top:6px}
+  #restart{margin:0}
+  details{margin-top:6px;font-size:12px}
+  details[open]{position:absolute;z-index:10;inset:20px;max-width:none;max-height:calc(100% - 40px);overflow:auto;padding:24px;background:#162532;border:1px solid #edc77a;border-radius:14px;font-size:18px;box-shadow:0 10px 40px #0009}
+}
+
+
+.summary-total{font-size:clamp(28px,4vw,48px);font-weight:800;color:#edc77a;margin:12px 0}
+.results-table{width:100%;border-collapse:collapse;margin:20px 0;text-align:left;font-size:17px}
+.results-table caption{text-align:left;margin-bottom:10px}
+.results-table th,.results-table td{padding:13px 12px;border-bottom:1px solid #ffffff26}
+.results-table thead th{color:#edc77a}
+.results-table tbody th{font-weight:500}
+.results-table td{white-space:nowrap}
+#summary-back{margin:10px 0}
+@media(max-width:750px){.results-table{font-size:12px}.results-table th,.results-table td{padding:9px 4px}.results-table td{white-space:normal}.results-table tbody th{width:35%}}
+@media(min-width:900px) and (min-height:500px){.results-table{margin:12px 0}.results-table th,.results-table td{padding:10px 12px}}
+@media(max-width:1100px){.advance-controls{flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:750px){.advance-controls{width:100%;justify-content:flex-start}.advance-controls button{flex:1}}
+</style>
+<main>
+<header><div class="brand">ÁLLÍTSD SORBA! – FARAGÓ CSABA KVÍZKÉRDÉSEI</div><div class="top-actions"><label for="question" class="hint">Kérdés</label><select id="question" aria-label="Kérdés kiválasztása"></select><button id="restart" hidden>Új játék</button><button id="fullscreen">Teljes képernyő</button></div></header>
+<section id="game-view">
+<p class="eyebrow" id="counter"></p><h1 id="title"></h1><p class="intro" id="intro"></p>
+<div class="bar" aria-hidden="true"><div id="progress"></div></div>
+<section class="answers" id="answers" aria-label="Válaszlehetőségek" aria-live="polite"></section>
+<section id="guess-panel" class="guess-panel" hidden aria-label="Saját tipp">
+<label for="guess">A tipped a helyes sorrendre</label>
+<input id="guess" type="text" maxlength="4" placeholder="Pl. ABCD" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="guess-help">
+<button id="skip" type="button">Tippelés kihagyása →</button>
+<span id="guess-help">Írd be az A, B, C és D betűt, mindegyiket egyszer.</span>
+</section>
+<section id="score" class="score" hidden aria-live="polite"></section>
+<div class="solution" id="solution" aria-live="polite"></div>
+<nav class="controls" aria-label="Előadás vezérlése"><div class="group"><button id="back">← Vissza</button><button id="reset">Kérdés újra</button></div><div class="group advance-controls"><button id="show-all">Összes válasz megjelenítése</button><button class="primary" id="next"></button></div></nav>
+<div class="hint">Szóköz / → : következő lépés &nbsp; · &nbsp; ← : vissza &nbsp; · &nbsp; F : teljes képernyő</div>
+<details><summary>Pontozás és használat</summary><p>Írjátok le a négy betűt a kért sorrendben! Telitalálat: 2 pont. Ha egy elem eltávolításával a maradék három belső sorrendje helyes: 1 pont. Minden más eset: 0 pont.</p><p>A válaszok A–D sorrendben jelennek meg. Mind a négy válasz után add meg a tipped a négy betűvel, vagy válaszd a „Tippelés kihagyása” gombot! Kihagyáskor közvetlenül a megoldás jelenik meg, pont nem jár; ez előadáshoz is használható. A megoldás felfedésekor a tipp véglegessé válik, és megkapod a pontokat. A végén legfeljebb 16 pontot gyűjthetsz. Minden játékos saját pontszámot kap a saját böngészőjében. Az oldal frissítése új játékot indít. A „Helyes sorrend” gomb egyszerre fedi fel a sorrendet és az Excelben szereplő értékeket. A kérdésválasztó új kérdést indít, rejtett válaszokkal. Az oldal internet nélkül is használható.</p></details>
+</section>
+<section id="summary-view" hidden aria-labelledby="summary-title">
+<p class="eyebrow">A kvíz eredménye</p>
+<h1 id="summary-title" tabindex="-1">Eredmények</h1>
+<p id="summary-total" class="summary-total"></p>
+<p id="summary-status" class="hint"></p>
+<table class="results-table">
+<caption class="hint">Kérdésenkénti tippek és pontszámok</caption>
+<thead><tr><th scope="col">Kérdés</th><th scope="col">A tipped</th><th scope="col">Helyes sorrend</th><th scope="col">Pont</th></tr></thead>
+<tbody id="summary-rows"></tbody>
+</table>
+<button id="summary-back">← Vissza a kvízhez</button>
+</section>
+
+</main>
+<script>
+const questions=[{"title": "A legolcsóbbtól a legdrágábbig", "order": "BDAC", "answers": [{"letter": "A", "text": "Egy 30 másodperces reklámblokk ára az amerikai Super Bowl élő televíziós közvetítése alatt", "value": "9 millió USD"}, {"letter": "B", "text": "Egy Nobel-díjjal járó készpénz összege", "value": "1,2 millió USD"}, {"letter": "C", "text": "Egy civil űrturista jegyének ára a Nemzetközi Űrállomáson", "value": "55 millió USD"}, {"letter": "D", "text": "Egy szívátültetés teljes költsége", "value": "1,7 millió USD"}]}, {"title": "A legkevesebbtől a legtöbbig", "order": "ADCB", "answers": [{"letter": "A", "text": "Csillagok száma a Tejútendszerben", "value": "4*10^11"}, {"letter": "B", "text": "Egy köbméter tömör finom porban a porszemek száma", "value": "10^15"}, {"letter": "C", "text": "Sejtek száma az emberi testben", "value": "4*10^13"}, {"letter": "D", "text": "Fák száma a Földön", "value": "3*10^12"}]}, {"title": "A legvalószínűbbtől a legvalószínűtlenebbig", "order": "CBDA", "answers": [{"letter": "A", "text": "Annak a valószínűsége, hogy egy francia kártya pakli véletlen keverés után gyári sorrendbe rendeződik", "value": "1 : 8,06*10^67"}, {"letter": "B", "text": "Annak a valószínűsége, hogy véletlenszerűen felrakjuk az összes sakkfigurát a sakktáblára, és pont a kezdőállapot jön létre", "value": "1 : 4,63*10^42"}, {"letter": "C", "text": "Annak a valószínűsége, hogy 100 érmefeldobásból mindegyik fej", "value": "1 : 1,26*10^30"}, {"letter": "D", "text": "Annak a valószínűsége, hogy egy 4x4x4-es méretű Rubik kockát véletlenszerű tekerésekkel után pont kirakjuk", "value": "1 : 7,40*10^45"}]}, {"title": "A legkisebbtől a legnagyobbig", "order": "BDCA", "answers": [{"letter": "A", "text": "A világ összes nettó magánvagyona", "value": "480 billió USD"}, {"letter": "B", "text": "A világ egy éves GDP-je", "value": "110 billió USD"}, {"letter": "C", "text": "A világ összes adóssága", "value": "300 billió USD"}, {"letter": "D", "text": "A világ teljes pénztömege (készpénz + csekk + bankszámla)", "value": "150 billió USD"}]}, {"title": "A legkevesebbtől a legtöbbig", "order": "ADCB", "answers": [{"letter": "A", "text": "A szabványos Rubik-kocka kombinációinak száma", "value": "4,33*10^19"}, {"letter": "B", "text": "A 13x13-as gótábla szabályos állásainak a száma", "value": "2,46*10^80"}, {"letter": "C", "text": "Legális sakkállások száma", "value": "4,80*10^44"}, {"letter": "D", "text": "Érvényes Sudoku táblák száma", "value": "6,67*10^21"}]}, {"title": "A legolcsóbbtól a legdrágábbig", "order": "CBDA", "answers": [{"letter": "A", "text": "Egy csepp csapvíz ára", "value": "10^-5 Ft"}, {"letter": "B", "text": "Egy LED egyetlen felvillanásának villamosenergia-költsége", "value": "10^-8 Ft"}, {"letter": "C", "text": "Egy darab tranzisztor ára (nagy sűrűségű IC-ben)", "value": "10^-9 Ft"}, {"letter": "D", "text": "Egy szem homok ára", "value": "10^-6 Ft"}]}, {"title": "A legvalószínűbbtől a legvalószínűtlenebbig", "order": "BACD", "answers": [{"letter": "A", "text": "Annak az esélye, hogy a valaha legyártott összes franciakártyát megkeverve mindegyik a gyári sorrendbe kerül", "value": "1 : 10^(10^13)"}, {"letter": "B", "text": "Annak az esélye, hogy a valaha a világtörténelemben vert összes érmét feldobjuk, és mindegyik fej lesz", "value": "1 : 10^(3*10^12)"}, {"letter": "C", "text": "Annak az esélye, hogy a világ ma élő összes embere legépel 130.000 véletlenszerű karaktert, és mindenki pont véletlenül Shakespeare Hamletjét gépeli le", "value": "1 : 10^(1,8*10^15)"}, {"letter": "D", "text": "Annak az esélye, hogy a valaha legyártott összes képernyőn 5 óra 42 perces 4K minőségű zajt játszunk le, és mindegyiken teljesen véletlenül pixelpontosan a Vissza a jövőbe trilógia jelenik meg", "value": "1 : 10^(3*10^23)"}]}, {"title": "A legolcsóbbtól a legdrágábbig", "order": "DACB", "answers": [{"letter": "A", "text": "Magyarország egy éves GDP-je", "value": "220 milliárd USD"}, {"letter": "B", "text": "Az USA éves katonai költségvetése", "value": "850 milliárd USD"}, {"letter": "C", "text": "A teljes Apollo program (holdraszállás) ára mai értéken", "value": "300 milliárd USD"}, {"letter": "D", "text": "A pekingi 2008-as nyári és a 2022-es téli olimpia teljes együttes becsült költsége mai értéken számova", "value": "100 milliárd USD"}]}];
+let index=0,step=0;
+let showingSummary=false;
+const guesses=questions.map(()=>'');
+const results=questions.map(()=>null);
+const skipped=questions.map(()=>false);
+function validGuess(guess) {
+  return /^[ABCD]{4}$/.test(guess) && new Set(guess).size===4;
+}
+function pointsFor(guess, correct) {
+  if (!validGuess(guess)) return 0;
+  if (guess===correct) return 2;
+  for (const letter of correct) {
+    if (guess.replace(letter,'')===correct.replace(letter,'')) return 1;
+  }
+  return 0;
+}
+function updateGuess() {
+  const input=el('guess');
+  guesses[index]=input.value.toUpperCase().replace(/\s/g,'');
+  input.value=guesses[index];
+  scheduleFit();
+  const valid=validGuess(guesses[index]);
+  input.setAttribute('aria-invalid',String(input.value.length>0&&!valid));
+  el('guess-help').textContent=valid?'A tipped kész. Felfedheted a megoldást.':'Írd be az A, B, C és D betűt, mindegyiket egyszer.';
+  el('next').disabled=step===4&&!valid;
+}
+
+const el=id=>document.getElementById(id);
+questions.forEach((q,i)=>{const o=document.createElement('option');o.value=i;o.textContent=(i+1)+' / '+questions.length;el('question').append(o)});
+
+
+function appendPowerText(target, text) {
+  const powers = /\^(\(([^()]*)\)|-?\d+)/g;
+  let start = 0;
+  for (const match of text.matchAll(powers)) {
+    target.append(document.createTextNode(text.slice(start, match.index).replaceAll('*', '×')));
+    const exponent = document.createElement('sup');
+    appendPowerText(exponent, match[2] === undefined ? match[1] : match[2]);
+    target.append(exponent);
+    start = match.index + match[0].length;
+  }
+  target.append(document.createTextNode(text.slice(start).replaceAll('*', '×')));
+}
+
+function expandedValue(value) {
+  const match = value.match(/^(1\s*:\s*)?(?:(\d+(?:[,.]\d+)?)\*)?10\^(-?\d+)(\s+.*)?$/);
+  if (!match) return null;
+  const coefficient = (match[2] || '1').replace(',', '.');
+  const parts = coefficient.split('.');
+  const digits = parts.join('');
+  const decimalPosition = parts[0].length + Number(match[3]);
+  let integer, fraction;
+  if (decimalPosition <= 0) {
+    integer = '0';
+    fraction = '0'.repeat(-decimalPosition) + digits;
+  } else {
+    integer = digits.slice(0, decimalPosition).padEnd(decimalPosition, '0');
+    fraction = digits.slice(decimalPosition);
+  }
+  integer = integer.replace(/^0+(?=\d)/, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  fraction = fraction.replace(/0+$/, '');
+  return (match[1] ? '1 : ' : '') + integer + (fraction ? ',' + fraction : '') + (match[4] || '');
+}
+
+
+let fitFrame;
+function fitScreen() {
+  const main=document.querySelector('main');
+  main.style.removeProperty('--screen-scale');
+  if(!window.matchMedia('(min-width:900px) and (min-height:500px)').matches)return;
+  const scale=Math.min(1,(window.innerHeight-4)/main.offsetHeight,(window.innerWidth-4)/main.scrollWidth);
+  main.style.setProperty('--screen-scale',String(scale));
+}
+function scheduleFit() {
+  cancelAnimationFrame(fitFrame);
+  fitFrame=requestAnimationFrame(fitScreen);
+}
+window.addEventListener('resize',scheduleFit);
+document.addEventListener('fullscreenchange',scheduleFit);
+document.querySelector('details').addEventListener('toggle',scheduleFit);
+if(document.fonts)document.fonts.ready.then(scheduleFit);
+
+function renderSummary() {
+ const completed=results.filter((value,i)=>value!==null||skipped[i]).length;
+ const total=results.reduce((sum,value)=>sum+(value===null?0:value),0);
+ el('summary-total').textContent=total+' / '+(questions.length*2)+' pont';
+ el('summary-status').textContent='Befejezett kérdések: '+completed+' / '+questions.length+' · Tippelés kihagyva: '+skipped.filter(Boolean).length+(completed<questions.length?' · A hátralévő kérdésekhez térj vissza a kvízhez.':'');
+ el('summary-rows').replaceChildren();
+ questions.forEach((question,i)=>{
+  const row=document.createElement('tr');
+  const played=results[i]!==null||skipped[i];
+  const cells=[(i+1)+'. '+question.title,skipped[i]?'Kihagyva':results[i]===null?'Még nincs tipp':[...guesses[i]].join(' → '),played?[...question.order].join(' → '):'—',results[i]===null?(skipped[i]?'—':'Még nincs eredmény'):results[i]+' / 2'];
+  cells.forEach((value,column)=>{
+   const cell=document.createElement(column===0?'th':'td');
+   if(column===0)cell.setAttribute('scope','row');
+   cell.textContent=value;row.append(cell);
+  });
+  el('summary-rows').append(row);
+ });
+ scheduleFit();
+}
+function render(){
+ el('game-view').hidden=showingSummary;
+ el('summary-view').hidden=!showingSummary;
+ if(showingSummary){renderSummary();return}
+
+ const q=questions[index],solved=step===5;
+ el('question').value=index;el('counter').textContent='Kérdés '+(index+1)+' / '+questions.length;
+ el('title').textContent=q.title;
+ el('intro').textContent=solved?'A helyes sorrend':'Négy lehetőség. Milyen sorrendbe állítanátok őket?';
+ el('progress').style.width=(step/5*100)+'%';
+ el('answers').replaceChildren();
+ const items=solved?[...q.order].map(l=>q.answers.find(a=>a.letter===l)):q.answers;
+ items.forEach((a,i)=>{
+  const card=document.createElement('article');card.className='card';
+  if(!solved && i>=step){card.classList.add('hidden');const p=document.createElement('span');p.className='placeholder';p.textContent=a.letter+' · Még nem látható';card.append(p)}
+  else{const badge=document.createElement('span');badge.className='badge';badge.textContent=a.letter;const content=document.createElement('div');
+   if(solved){const rank=document.createElement('span');rank.className='rank';rank.textContent=(i+1)+'. hely';content.append(rank)}
+   const p=document.createElement('p');p.className='text';p.textContent=a.text;content.append(p);
+   if(solved){const v=document.createElement('div');v.className='value';appendPowerText(v,a.value);content.append(v);const expanded=expandedValue(a.value);if(expanded){const full=document.createElement('div');full.className='expanded-value';full.textContent='= '+expanded;content.append(full)}}
+   card.append(badge,content);
+  }el('answers').append(card);
+ });
+ el('solution').replaceChildren();
+ if(solved){const label=document.createElement('span');label.textContent='Helyes sorrend';const order=document.createElement('strong');order.textContent=[...q.order].join(' → ');el('solution').append(label,order)}
+ else el('solution').textContent=step===4?'Mind a négy válasz látható. Jöhet a megoldás?':step+' / 4 válasz látható';
+ el('back').disabled=index===0&&step===0;
+ el('guess-panel').hidden=step<4||solved;
+ el('guess').value=guesses[index];
+ el('guess').disabled=results[index]!==null||skipped[index];
+ el('skip').hidden=step!==4||results[index]!==null||skipped[index];
+ el('guess').setAttribute('aria-invalid','false');
+ el('guess-help').textContent=skipped[index]?'Ezt a kérdést tippelés nélkül nézted meg.':results[index]!==null?'A tipped rögzítve; erre a kérdésre már kaptál pontot.':'Írd be az A, B, C és D betűt, mindegyiket egyszer.';
+ el('show-all').hidden=step>=4;
+ el('next').disabled=step===4&&!skipped[index]&&!validGuess(guesses[index]);
+ const answered=results.filter((value,i)=>value!==null||skipped[i]).length;
+ const skippedCount=skipped.filter(Boolean).length;
+ const total=results.reduce((sum,value)=>sum+(value===null?0:value),0);
+ el('score').hidden=!solved;
+ el('score').replaceChildren();
+ if(solved){
+  const heading=document.createElement('strong');
+  heading.textContent=answered===questions.length?'Végeredmény: '+total+' / '+(questions.length*2)+' pont':'Eddig gyűjtött pontjaid: '+total+' / '+(questions.length*2);
+  const detail=document.createElement('p');
+  detail.textContent=(skipped[index]?'Tippelés kihagyva · Erre a kérdésre nem kaptál pontot':'A tipped: '+[...guesses[index]].join(' → ')+' · Erre a kérdésre: '+results[index]+' / 2 pont')+' · Befejezve: '+answered+' / '+questions.length+' · Kihagyva: '+skippedCount;
+  el('score').append(heading,detail);
+ }
+ el('restart').hidden=answered===0;
+ el('next').textContent=step<4?'Következő válasz ('+'ABCD'[step]+') →':step===4?'Helyes sorrend →':index<questions.length-1?'Következő kérdés →':'Eredmények megtekintése →';
+ scheduleFit();
+}
+function next(){
+ if(showingSummary)return;
+ if(step===5&&index===questions.length-1){showingSummary=true;render();el('summary-title').focus();return}
+ if(step===4&&!skipped[index]){
+  if(!validGuess(guesses[index])){el('guess').focus();return}
+  if(results[index]===null)results[index]=pointsFor(guesses[index],questions[index].order);
+ }
+ if(step<5)step++;else if(index<questions.length-1){index++;step=0}
+ render();
+}
+function back(){if(showingSummary){showingSummary=false;render();return}if(step>0)step--;else if(index>0){index--;step=results[index]===null&&!skipped[index]?4:5}render()}
+async function fullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch{el('solution').textContent='A teljes képernyőhöz használd a böngésző F11 billentyűjét.'}}
+el('next').onclick=next;el('back').onclick=back;el('reset').onclick=()=>{step=0;render()};
+el('question').onchange=e=>{showingSummary=false;index=Number(e.target.value);step=0;render()};
+el('summary-back').onclick=back;
+el('show-all').onclick=()=>{
+ if(showingSummary||step>=4)return;
+ step=4;render();
+};
+el('fullscreen').onclick=fullscreen;
+el('guess').oninput=updateGuess;
+el('skip').onclick=()=>{
+ if(step!==4||results[index]!==null||skipped[index])return;
+ guesses[index]='';skipped[index]=true;step=5;render();
+};
+el('guess').onkeydown=e=>{
+ if(e.key==='Enter'){e.preventDefault();next()}
+};
+el('restart').onclick=()=>{
+ if(!confirm('Újrakezded a teljes kvízt? Az eddigi tippek és pontok törlődnek.'))return;
+ guesses.fill('');results.fill(null);skipped.fill(false);showingSummary=false;index=0;step=0;render();
+};
+document.addEventListener('fullscreenchange',()=>{el('fullscreen').textContent=document.fullscreenElement?'Kilépés a teljes képernyőből':'Teljes képernyő'});
+document.addEventListener('keydown',e=>{
+ if(e.altKey||e.ctrlKey||e.metaKey||e.repeat||/^(BUTTON|SELECT|INPUT|TEXTAREA|SUMMARY)$/.test(e.target.tagName))return;
+ if(e.code==='Space'||e.key==='ArrowRight'){e.preventDefault();next()}
+ else if(e.key==='ArrowLeft'){e.preventDefault();back()}
+ else if(e.key.toLowerCase()==='f'){e.preventDefault();fullscreen()}
+});
+render();
+</script>
+</html>
